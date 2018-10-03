@@ -1,0 +1,7 @@
+# Editor
+.idea/
+
+.gradle/
+out/
+build/
+logs
