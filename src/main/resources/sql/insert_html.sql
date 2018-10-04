@@ -20,6 +20,6 @@ where
     from html_page h
     where
       x.url = h.url
-      x.topic_id = h.topic_id
+      and x.topic_id = h.topic_id
       and x.crawl_timestamp < h.crawl_timestamp
   );
