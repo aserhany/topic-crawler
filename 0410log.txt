@@ -1,0 +1,14 @@
+Connecting to database: jdbc:postgresql://localhost:5432/nlp_playground
+New archive url: http://www.spiegel.de/thema/brexit/archiv.html
+    new url: http://www.spiegel.de/
+org.postgresql.util.PSQLException: ERROR: syntax error at or near "x"
+  Position: 316
+	at org.postgresql.core.v3.QueryExecutorImpl.receiveErrorResponse(QueryExecutorImpl.java:2433)
+	at org.postgresql.core.v3.QueryExecutorImpl.processResults(QueryExecutorImpl.java:2178)
+	at org.postgresql.core.v3.QueryExecutorImpl.execute(QueryExecutorImpl.java:306)
+	at org.postgresql.jdbc.PgStatement.executeInternal(PgStatement.java:441)
+	at org.postgresql.jdbc.PgStatement.execute(PgStatement.java:365)
+	at org.postgresql.jdbc.PgPreparedStatement.executeWithFlags(PgPreparedStatement.java:155)
+	at org.postgresql.jdbc.PgPreparedStatement.execute(PgPreparedStatement.java:144)
+	at news.crawler.BasicWebCrawler.getPageLinks(BasicWebCrawler.java:70)
+	at news.core.Main.main(Main.java:20)

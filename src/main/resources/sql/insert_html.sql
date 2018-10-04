@@ -11,7 +11,8 @@ from (
     ? as uuid,
     ? as url,
     ? as crawl_timestamp,
-    ? as html_compressed
+    ? as html_compressed,
+    ? as topic_id
 )  x
 where
   not exists (
@@ -19,6 +20,6 @@ where
     from html_page h
     where
       x.url = h.url
-      x.topic_id = x.topic_id
+      x.topic_id = h.topic_id
       and x.crawl_timestamp < h.crawl_timestamp
   );
