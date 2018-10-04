@@ -2,7 +2,8 @@ insert into html_page (
   uuid,
   url,
   crawl_timestamp,
-  html_compressed
+  html_compressed,
+  topic_id
 )
 select *
 from (
@@ -18,5 +19,6 @@ where
     from html_page h
     where
       x.url = h.url
+      x.topic_id = x.topic_id
       and x.crawl_timestamp < h.crawl_timestamp
   );

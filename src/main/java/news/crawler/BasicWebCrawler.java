@@ -45,15 +45,6 @@ public class BasicWebCrawler {
                 System.out.println("New archive url: " + URL);
                 Document document = Jsoup.connect(URL).timeout(0).get();
 
-                SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'", Locale.US);
-                format.setTimeZone(TimeZone.getTimeZone("UTC"));
-
-                insertHTML.setObject(1, VariousUtils.generateUUIDv1());
-                insertHTML.setString(2, URL);
-                insertHTML.setObject(3, LocalDateTime.now());
-                insertHTML.setBytes(4, GZIPUtils.compressString(document.html()));
-                insertHTML.execute();
-
                 Elements linksOnPage = document.select("a[href]");
 
                 for (Element page : linksOnPage) {
@@ -75,6 +66,7 @@ public class BasicWebCrawler {
                         insertHTML.setString(2, articleUrl);
                         insertHTML.setObject(3, LocalDateTime.now());
                         insertHTML.setBytes(4, GZIPUtils.compressString(article.html()));
+                        insertHTML.setInt(5, 2);
                         insertHTML.execute();
                     }
                 }
