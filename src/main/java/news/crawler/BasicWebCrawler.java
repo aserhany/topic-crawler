@@ -29,10 +29,16 @@ public class BasicWebCrawler {
 
     public HashSet<String> links;
     private Connection connection;
+    private String sharedPartTopicUrlPattern;
+    private String baseUrlPattern;
+    private int topicId;
 
-    public BasicWebCrawler() {
+    public BasicWebCrawler(String sharedPartTopicUrlPattern, String baseUrlPattern, int topicId) {
         connection = DatabaseManager.getConnection();
         links = new HashSet<String>();
+        this.sharedPartTopicUrlPattern = sharedPartTopicUrlPattern;
+        this.baseUrlPattern = baseUrlPattern;
+        this.topicId = topicId;
     }
 
     public void getPageLinks(String URL) {
@@ -49,15 +55,15 @@ public class BasicWebCrawler {
 
                 for (Element page : linksOnPage) {
 
-                    Pattern p1 = Pattern.compile("http://www.spiegel.de/thema/brexit/archiv.*");
+                    Pattern p1 = Pattern.compile(sharedPartTopicUrlPattern);
                     Matcher m1 = p1.matcher(page.attr("abs:href"));
-                    Pattern p2 = Pattern.compile("http://www.spiegel.de.*");
+                    Pattern p2 = Pattern.compile(baseUrlPattern);
                     Matcher m2 = p2.matcher(page.attr("abs:href"));
                     if(m1.find()){
-                        System.out.println("    new archive to be processed: " + page.attr("abs:href"));
+                        // System.out.println("    new archive to be processed: " + page.attr("abs:href"));
                         getPageLinks(page.attr("abs:href"));
                     } else if (m2.find() && !links.contains(page.attr("abs:href"))){
-                        System.out.println("    new url: " + page.attr("abs:href"));
+                        //System.out.println("    new url: " + page.attr("abs:href"));
                         links.add(page.attr("abs:href"));
                         String articleUrl = page.attr("abs:href");
                         Document article = Jsoup.connect(articleUrl).timeout(0).get();
@@ -66,7 +72,7 @@ public class BasicWebCrawler {
                         insertHTML.setString(2, articleUrl);
                         insertHTML.setObject(3, LocalDateTime.now());
                         insertHTML.setBytes(4, GZIPUtils.compressString(article.html()));
-                        insertHTML.setInt(5, 2);
+                        insertHTML.setInt(5, topicId);
                         insertHTML.execute();
                     }
                 }
