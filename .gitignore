@@ -7,3 +7,7 @@
 out/
 build/
 logs
+
+# remove log and text files
+*.log
+*.txt
