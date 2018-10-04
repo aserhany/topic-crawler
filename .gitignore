@@ -1,5 +1,7 @@
 # Editor
 .idea/
+/.idea/
+.idea/workspace.xml
 
 .gradle/
 out/
