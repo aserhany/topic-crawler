@@ -17,7 +17,7 @@ public class Main {
         conf = new Configuration();
 
         BasicWebCrawler basicWebCrawler = new BasicWebCrawler();
-        basicWebCrawler.getPageLinks("http://www.spiegel.de/thema/fluechtlinge/archiv.html");
+        basicWebCrawler.getPageLinks("http://www.spiegel.de/thema/brexit/archiv.html");
 
     }
 }

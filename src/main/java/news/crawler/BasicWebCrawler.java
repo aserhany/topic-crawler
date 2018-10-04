@@ -49,7 +49,7 @@ public class BasicWebCrawler {
 
                 for (Element page : linksOnPage) {
 
-                    Pattern p1 = Pattern.compile("http://www.spiegel.de/thema/fluechtlinge/archiv.*");
+                    Pattern p1 = Pattern.compile("http://www.spiegel.de/thema/brexit/archiv.*");
                     Matcher m1 = p1.matcher(page.attr("abs:href"));
                     Pattern p2 = Pattern.compile("http://www.spiegel.de.*");
                     Matcher m2 = p2.matcher(page.attr("abs:href"));

@@ -43,3 +43,7 @@ create table topic (
 		constraint html_link_source_id_fkey
 			references source
 );
+
+insert into source (id, name, "language") values (1, 'SpiegelOnline', 'de')
+insert into topic (name, url, source_id) values ('Flüchtlinge', 'http://www.spiegel.de/thema/fluechtlinge/archiv.html',1)
+insert into topic (name, url, source_id) values ('Brexit', 'http://www.spiegel.de/thema/brexit/archiv.html',1)
