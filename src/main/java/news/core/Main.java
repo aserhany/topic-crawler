@@ -16,88 +16,114 @@ public class Main {
 
         conf = new Configuration();
 
-        BasicWebCrawler boerseCrawler = new BasicWebCrawler("http://www.spiegel.de/thema/boerse/archiv.*"
-                , "http://www.spiegel.de.*",3);
-        boerseCrawler.getPageLinks("http://www.spiegel.de/thema/boerse/archiv.html");
+        BasicWebCrawler c1 = new BasicWebCrawler("https://afdkompakt.de/themen-2/familie-kinder/.*"
+                , "https://afdkompakt.de.*",1);
+        c1.getPageLinks("https://afdkompakt.de/themen-2/familie-kinder/");
+        System.out.println("################# Done with Famili + Kinder ######################");
 
-        System.out.println("################# Done with Boere ######################");
+        c1 = new BasicWebCrawler("https://afdkompakt.de/themen-2/islam-abendland/.*"
+                , "https://afdkompakt.de.*",2);
+        c1.getPageLinks("https://afdkompakt.de/themen-2/islam-abendland/");
+        System.out.println("################# Done with ISLAM+ABENDLAND ######################");
 
-        BasicWebCrawler bundeswehrCrawler = new BasicWebCrawler("http://www.spiegel.de/thema/bundeswehr/archiv.*"
-                , "http://www.spiegel.de.*",4);
-        bundeswehrCrawler.getPageLinks("http://www.spiegel.de/thema/bundeswehr/archiv.html");
+        c1 = new BasicWebCrawler("https://afdkompakt.de/themen-2/schutz-sicherheit/.*"
+                , "https://afdkompakt.de.*",3);
+        c1.getPageLinks("https://afdkompakt.de/themen-2/schutz-sicherheit/");
+        System.out.println("################# Done with SCHUTZ+SICHERHEIT ######################");
 
-        System.out.println("################# Done with Bundeswehr ######################");
+        c1 = new BasicWebCrawler("https://afdkompakt.de/themen-2/gewalt-gegen-afd/.*"
+                , "https://afdkompakt.de.*",4);
+        c1.getPageLinks("https://afdkompakt.de/themen-2/gewalt-gegen-afd/");
+        System.out.println("################# Done with GEWALT GEGEN AFD######################");
 
-        BasicWebCrawler chemnitzCrawler = new BasicWebCrawler("http://www.spiegel.de/thema/chemnitz/dossierarchiv.*"
-                , "http://www.spiegel.de.*",5);
-        chemnitzCrawler.getPageLinks("http://www.spiegel.de/thema/chemnitz/dossierarchiv-2.html");
+        c1 = new BasicWebCrawler("https://afdkompakt.de/themen-2/heimat-identitaet/.*"
+                , "https://afdkompakt.de.*",5);
+        c1.getPageLinks("https://afdkompakt.de/themen-2/heimat-identitaet/");
+        System.out.println("################# Done with HEIMT + IDENTITÄT D######################");
 
-        System.out.println("################# Done with Chemnitz ######################");
+        c1 = new BasicWebCrawler("https://afdkompakt.de/themen-2/freiheit-buerger/.*"
+                , "https://afdkompakt.de.*",6);
+        c1.getPageLinks("https://afdkompakt.de/themen-2/freiheit-buerger/");
+        System.out.println("################# Done with FREIHEIT DER BÜRGER ######################");
 
-        BasicWebCrawler erneubareEnergieCrawler = new BasicWebCrawler("http://www.spiegel.de/thema/erneuerbare_energien/archiv.*"
-                , "http://www.spiegel.de.*",6);
-        erneubareEnergieCrawler.getPageLinks("http://www.spiegel.de/thema/erneuerbare_energien/archiv.html");
+        c1 = new BasicWebCrawler("https://afdkompakt.de/themen-2/medien-wahrheit/.*"
+                , "https://afdkompakt.de.*",6);
+        c1.getPageLinks("https://afdkompakt.de/themen-2/medien-wahrheit/");
+        System.out.println("################# Done with MEDIEN WAHRHEIT ######################");
 
-        System.out.println("################# Done with ErneubareEnergie ######################");
+        c1 = new BasicWebCrawler("https://afdkompakt.de/themen-2/europa-vielfalt/.*"
+                , "https://afdkompakt.de.*",6);
+        c1.getPageLinks("https://afdkompakt.de/themen-2/europa-vielfalt/");
+        System.out.println("################# Done with EUROPA DER VIELFALT ######################");
 
-        BasicWebCrawler griechenlandCrawler = new BasicWebCrawler("http://www.spiegel.de/thema/griechenland/dossierarchiv.*"
-                , "http://www.spiegel.de.*",7);
-        griechenlandCrawler.getPageLinks("http://www.spiegel.de/thema/griechenland/dossierarchiv-2.html");
+        c1 = new BasicWebCrawler("https://afdkompakt.de/themen-2/europa-vielfalt/.*"
+                , "https://afdkompakt.de.*",6);
+        c1.getPageLinks("https://afdkompakt.de/themen-2/europa-vielfalt/");
+        System.out.println("################# Done with EUROPA DER VIELFALT ######################");
 
-        System.out.println("################# Done with Griechendland ######################");
+        c1 = new BasicWebCrawler("https://afdkompakt.de/themen-2/europa-vielfalt/.*"
+                , "https://afdkompakt.de.*",6);
+        c1.getPageLinks("https://afdkompakt.de/themen-2/europa-vielfalt/");
+        System.out.println("################# Done with EUROPA DER VIELFALT ######################");
 
-        BasicWebCrawler islamCrawler = new BasicWebCrawler("http://www.spiegel.de/thema/islam/dossierarchiv.*"
-                , "http://www.spiegel.de.*",8);
-        islamCrawler.getPageLinks("http://www.spiegel.de/thema/islam/dossierarchiv-2.html");
+        c1 = new BasicWebCrawler("https://afdkompakt.de/themen-2/souveraen/.*"
+                , "https://afdkompakt.de.*",6);
+        c1.getPageLinks("https://afdkompakt.de/themen-2/souveraen/");
+        System.out.println("################# Done with SOUVERÄNITÄT ######################");
 
-        System.out.println("################# Done with Islam ######################");
+        c1 = new BasicWebCrawler("https://afdkompakt.de/themen-2/direkte-demokratie/.*"
+                , "https://afdkompakt.de.*",6);
+        c1.getPageLinks("https://afdkompakt.de/themen-2/direkte-demokratie/");
+        System.out.println("################# Done with DIREKTE DEMOKRATIE ######################");
 
+        c1 = new BasicWebCrawler("https://afdkompakt.de/themen-2/tradition-werte/.*"
+                , "https://afdkompakt.de.*",6);
+        c1.getPageLinks("https://afdkompakt.de/themen-2/tradition-werte/");
+        System.out.println("################# Done with TRADITION UND WERTE ######################");
 
-        BasicWebCrawler polizeiCrawler = new BasicWebCrawler("http://www.spiegel.de/thema/polizei/dossierarchiv.*"
-                , "http://www.spiegel.de.*",9);
-        polizeiCrawler.getPageLinks("http://www.spiegel.de/thema/polizei/dossierarchiv-2.html");
+        c1 = new BasicWebCrawler("https://afdkompakt.de/themen-2/bildung-wissen/.*"
+                , "https://afdkompakt.de.*",6);
+        c1.getPageLinks("https://afdkompakt.de/themen-2/bildung-wissen/");
+        System.out.println("################# Done with BILDUNG UND WISSEN ######################");
 
-        System.out.println("################# Done with Polizei ######################");
+        c1 = new BasicWebCrawler("https://afdkompakt.de/themen-2/solidaritaet/.*"
+                , "https://afdkompakt.de.*",6);
+        c1.getPageLinks("https://afdkompakt.de/themen-2/solidaritaet/");
+        System.out.println("################# Done with SOLIDARITÄT + SOZIALES ######################");
 
-        BasicWebCrawler relegionCrawler = new BasicWebCrawler("http://www.spiegel.de/thema/religion/dossierarchiv.*"
-                , "http://www.spiegel.de.*",10);
-        relegionCrawler.getPageLinks("http://www.spiegel.de/thema/religion/dossierarchiv-2.html");
+        c1 = new BasicWebCrawler("https://afdkompakt.de/themen-2/rente-demografie/.*"
+                , "https://afdkompakt.de.*",6);
+        c1.getPageLinks("https://afdkompakt.de/themen-2/rente-demografie/");
+        System.out.println("################# Done with RENTE + DEMOGRAFIE ######################");
 
-        System.out.println("################# Done with Relegion ######################");
+        c1 = new BasicWebCrawler("https://afdkompakt.de/themen-2/rechtsstaat/.*"
+                , "https://afdkompakt.de.*",6);
+        c1.getPageLinks("https://afdkompakt.de/themen-2/rechtsstaat/");
+        System.out.println("################# Done with STAAT + RECHT ######################");
 
-        BasicWebCrawler russlandCrawler = new BasicWebCrawler("http://www.spiegel.de/thema/russland/dossierarchiv.*"
-                , "http://www.spiegel.de.*",11);
-        russlandCrawler.getPageLinks("http://www.spiegel.de/thema/russland/dossierarchiv-2.html");
+        c1 = new BasicWebCrawler("https://afdkompakt.de/themen-2/geld-wirtschaft/.*"
+                , "https://afdkompakt.de.*",6);
+        c1.getPageLinks("https://afdkompakt.de/themen-2/geld-wirtschaft/");
+        System.out.println("################# Done with GELD + WIRTSCHAFT ######################");
 
-        System.out.println("################# Done with Russland ######################");
+        c1 = new BasicWebCrawler("https://afdkompakt.de/themen-2/deutscher-mittelstand/.*"
+                , "https://afdkompakt.de.*",6);
+        c1.getPageLinks("https://afdkompakt.de/themen-2/deutscher-mittelstand/");
+        System.out.println("################# Done with DEUTSCHER MITTELSTAND ######################");
 
-        BasicWebCrawler steuernCrawler = new BasicWebCrawler("http://www.spiegel.de/thema/steuern/dossierarchiv.*"
-                , "http://www.spiegel.de.*",12);
-        steuernCrawler.getPageLinks("http://www.spiegel.de/thema/steuern/dossierarchiv-2.html");
+        c1 = new BasicWebCrawler("https://afdkompakt.de/themen-2/energiewende/.*"
+                , "https://afdkompakt.de.*",6);
+        c1.getPageLinks("https://afdkompakt.de/themen-2/energiewende/");
+        System.out.println("################# Done with ENERGIEWENDE ######################");
 
-        System.out.println("################# Done with Steuern ######################");
+        c1 = new BasicWebCrawler("https://afdkompakt.de/themen-2/deutschland-2030/.*"
+                , "https://afdkompakt.de.*",6);
+        c1.getPageLinks("https://afdkompakt.de/themen-2/deutschland-2030/");
+        System.out.println("################# Done with DEUTSCHLAND 2030 ######################");
 
-        BasicWebCrawler syrienCrawler = new BasicWebCrawler("http://www.spiegel.de/thema/syrien/dossierarchiv.*"
-                , "http://www.spiegel.de.*",13);
-        syrienCrawler.getPageLinks("http://www.spiegel.de/thema/syrien/dossierarchiv-2.html");
-
-        System.out.println("################# Done with Syrien ######################");
-
-        BasicWebCrawler ueberwachungCrawler = new BasicWebCrawler("http://www.spiegel.de/thema/ueberwachung/archiv.*"
-                , "http://www.spiegel.de.*",14);
-        ueberwachungCrawler.getPageLinks("http://www.spiegel.de/thema/ueberwachung/archiv.html");
-
-        System.out.println("################# Done with Ueberwachung ######################");
-
-        BasicWebCrawler ukraineCrawler = new BasicWebCrawler("http://www.spiegel.de/thema/ukraine/dossierarchiv.*"
-                , "http://www.spiegel.de.*",15);
-        ukraineCrawler.getPageLinks("http://www.spiegel.de/thema/ukraine/dossierarchiv-2.html");
-
-        System.out.println("################# Done with Ukraine ######################");
-
-
-
-
-
+        c1 = new BasicWebCrawler("https://afdkompakt.de/bundesverband/mittelstandsforum/.*"
+                , "https://afdkompakt.de.*",6);
+        c1.getPageLinks("https://afdkompakt.de/bundesverband/mittelstandsforum/");
+        System.out.println("################# Done with MITTELSTANDFORUM ######################");
     }
 }
