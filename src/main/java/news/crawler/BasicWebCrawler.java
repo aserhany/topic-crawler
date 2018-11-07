@@ -11,9 +11,7 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import java.sql.*;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.ZoneOffset;
@@ -32,23 +30,27 @@ public class BasicWebCrawler {
     private String sharedPartTopicUrlPattern;
     private String baseUrlPattern;
     private int topicId;
+    private int sourceId;
 
-    public BasicWebCrawler(String sharedPartTopicUrlPattern, String baseUrlPattern, int topicId) {
+    public BasicWebCrawler(String sharedPartTopicUrlPattern, String baseUrlPattern, int topicId, int sourceId) {
         connection = DatabaseManager.getConnection();
         links = new HashSet<String>();
         this.sharedPartTopicUrlPattern = sharedPartTopicUrlPattern;
         this.baseUrlPattern = baseUrlPattern;
         this.topicId = topicId;
+        this.sourceId = sourceId;
     }
 
     public void getPageLinks(String URL) {
         try {
-            PreparedStatement insertHTML = this.connection.prepareStatement(
-                    SqlQueryManager.getInstance().loadQuery("insert_html"));
+            PreparedStatement insertArticle = this.connection.prepareStatement(
+                    SqlQueryManager.getInstance().loadQuery("insert_article"), Statement.RETURN_GENERATED_KEYS);
+            PreparedStatement insertTopicArticle = this.connection.prepareStatement(
+                    SqlQueryManager.getInstance().loadQuery("insert_topic_article"));
 
             if (!links.contains(URL)) {
                 links.add(URL);
-                System.out.println("New archive url: " + URL);
+                // System.out.println("New url: " + URL);
                 Document document = Jsoup.connect(URL).timeout(0).get();
 
                 Elements linksOnPage = document.select("a[href]");
@@ -68,12 +70,18 @@ public class BasicWebCrawler {
                         String articleUrl = page.attr("abs:href");
                         Document article = Jsoup.connect(articleUrl).timeout(0).get();
 
-                        insertHTML.setObject(1, VariousUtils.generateUUIDv1());
-                        insertHTML.setString(2, articleUrl);
-                        insertHTML.setObject(3, LocalDateTime.now());
-                        insertHTML.setBytes(4, GZIPUtils.compressString(article.html()));
-                        insertHTML.setInt(5, topicId);
-                        insertHTML.execute();
+                        insertArticle.setString(1, articleUrl);
+                        insertArticle.setString(2, article.html());
+                        insertArticle.setObject(3, sourceId);
+                        int rowAffected = insertArticle.executeUpdate();
+                        if (rowAffected == 1){
+                            ResultSet rs = insertArticle.getGeneratedKeys();
+                            if(rs.next()){
+                                insertTopicArticle.setInt(1, topicId);
+                                insertTopicArticle.setInt(2, rs.getInt(1));
+                                insertTopicArticle.execute();
+                            }
+                        }
                     }
                 }
             }
